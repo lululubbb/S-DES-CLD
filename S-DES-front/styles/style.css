@@ -1,0 +1,252 @@
+body { 
+    font-family: Arial, sans-serif; 
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #6a11cb; /* 渐变背景颜色 */
+    background-image: linear-gradient(315deg, #f9d6f6 0%, #ab61ec 74%);
+    color: white;
+}
+
+footer {
+    background-color: #d7d7d7; /* 页脚背景颜色 */
+    color: white; /* 文本颜色 */
+    text-align: center; /* 文本居中 */
+    padding: 20px 0; /* 上下填充和左右的填充 */
+    position: relative;
+    bottom: 0;
+    width: 100%; /* 宽度设置为100%，覆盖整个页面底部 */
+}
+
+.footer-content {
+    width: 80%; /* 宽度为父元素的80% */
+    margin: 0 auto; /* 自动边距实现居中 */
+    max-width: 1200px; /* 最大宽度，可调整 */
+}
+
+.footer-content p {
+    margin: 0 0 10px 0; /* 下边距 */
+    font-size: 16px; /* 字体大小 */
+    color: #1e1e1e; /* 字体颜色 */
+}
+
+.footer-content a {
+    color: #000000; /* 链接颜色 */
+    text-decoration: none; /* 无下划线 */
+    font-weight: bold; /* 字体加粗 */
+}
+
+.footer-content a:hover {
+    text-decoration: underline; /* 鼠标悬停时显示下划线 */
+}
+
+
+
+.logo {
+    height: 50px;
+    margin-right: 15px;
+}
+
+
+.site-name {
+    font-size: 2rem;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+
+.tab-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffffff;
+    padding: 10px;
+    border-style: solid;
+    border-width: 0px 3px 3px 3px; /* 分别对应上、右、下、左的边框宽度 */
+    border-color: #e7d2ff; /* 边框颜色 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    height:70px;
+}
+
+.tab-container button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+    outline: none; /* Remove outline when focused */
+    background-color: #ffffff;
+    font-size: 23px;
+}
+
+.tab-container button.active {
+    background-color: #ffcff1; /* Dark background color when active */
+    color: #ffffff; /* White text color when active */
+}
+
+.tab-container button:hover {
+    background-color: #efceff; /* Lighter background color when hovering */
+}
+
+.tab-content {
+    display: none;
+    padding: 40px;
+    border: 2px solid #e7d2ff;
+    /* max-width: 1000px; */
+    width: 70%;
+    margin: 50px auto; 
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; 
+}
+
+.tab-content h2 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+}
+
+.tab-content h3 {
+    color: #333;
+    font-size: 22px;
+}
+
+.tab-content h4 {
+    color: #333;
+    font-size: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #b9b1f3;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    font-size: 22px;
+}
+
+.button:hover {
+    background-color: #b4a1f7;
+}
+
+.button:active {
+    background-color: #8878f3;
+}
+
+p {
+    font-size:20px; /* 你可以根据需要调整这个值 */
+}
+
+.tab-content input[type="text"] {
+    padding: 8px;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    font-size:20px;
+    outline: none;
+}
+
+.inner-content{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    border: 2px dashed #e7d2ff;
+    max-width: 1000px;
+    margin: 50px auto; 
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; 
+}
+
+#custom-file-input-encrypt {
+    background-color: #b5d4f5; /* 按钮的背景颜色 */
+    color: white; /* 按钮文字的颜色 */
+    padding: 10px 20px; /* 按钮内边距 */
+    border: none; /* 按钮边框 */
+    border-radius: 5px; /* 按钮的圆角 */
+    cursor: pointer; /* 鼠标悬停时的光标样式 */
+    font-size: 20px; /* 文字大小 */
+}
+
+/* 当鼠标悬停在按钮上时改变按钮的背景颜色 */
+#custom-file-input-encrypt:hover {
+    background-color: #8bc1fa;
+}
+
+#custom-file-input-decrypt {
+    background-color: #b5d4f5; /* 按钮的背景颜色 */
+    color: white; /* 按钮文字的颜色 */
+    padding: 10px 20px; /* 按钮内边距 */
+    border: none; /* 按钮边框 */
+    border-radius: 5px; /* 按钮的圆角 */
+    cursor: pointer; /* 鼠标悬停时的光标样式 */
+    font-size: 20px; /* 文字大小 */
+}
+
+/* 当鼠标悬停在按钮上时改变按钮的背景颜色 */
+#custom-file-input-decrypt:hover {
+    background-color: #8bc1fa;
+}
+
+.result-box2 {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+    width: 240px;
+    height: 120px; 
+    font-size: 20px;
+    color: #858585;
+}
+
+.result-box3 {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+    width: 340px;
+    height: 140px; 
+    font-size: 20px;
+    color: #858585;
+}
+
+.result-box4 {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+    width: 280px;
+    height: 150px; 
+    font-size: 20px;
+    color: #858585;
+}
+
+/* 隐藏所有内容 */
+.bit8-content, .ascii-content, .file-content {
+    display: none;
+}
+
+/* 显示带有 active 类的内容 */
+.bit8-content.active, .ascii-content.active, .ascii-content.active, .file-content.active {
+    display: block;
+}
+
+
+.buttons {
+    margin-top: 10px;
+}

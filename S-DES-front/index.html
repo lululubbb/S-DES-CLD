@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-DES</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="header">
+        <img src="image/logo.png" alt="Logo" class="logo">
+        <h1 class="site-name">S-DES</h1>
+    </div>
+    <!-- 功能选项 -->
+    <div class="tab-container">
+        <button onclick="showTab('intro')">介绍</button>
+        <button onclick="showTab('bit8')">8bit 加解密</button>
+        <button onclick="showTab('ascii')">ASCII 加解密</button>
+        <button onclick="showTab('file')">文件加解密</button>
+        <button onclick="showTab('bruteforce')">暴力破解</button>
+    </div>
+
+    <!-- 介绍内容 -->
+    <div id="intro" class="tab-content active">
+        <h2>介绍</h2>
+        <p>S-DES(Simplified Data Encryption Standard)是一种简化版的DES算法,它被设计用于教育目的,以便更容易理解DES的工作原理。</p>
+        <P>S-DES使用一个10位的密钥和一个8位的明文进行加密,而标准的DES算法则使用一个56位的密钥和一个64位的数据块。</P>
+        <p>S-DES的加密过程包括初始置换IP、两轮的函数运算(每轮使用不同的8位子密钥)、交换和最终置换。</p>
+        <p>我们提供了8bit加解密、ASCII字符串加解密、文件加解密以及暴力破解等功能</p>
+        <h3>S-DES算法流程</h3>
+        <h4>加密</h4>
+        <p><img src="image/processen.jpg" alt="S-DES加密流程" width="30%" height="auto"></p>
+        <h4>解密</h4>
+        <p><img src="image/processde.png" alt="S-DES加密流程" width="30%" height="auto"></p>
+        <h3>子密钥生成</h3>
+        <p><img src="image/key_generate.jpg" alt="S-DES加密流程" width="20%" height="auto"></p>
+        <h3>轮函数F</h3>
+        <p><img src="image/F.jpg" alt="S-DES加密流程" width="20%" height="auto"></p>
+        <h3>S-DES 函数 <span style="font-family: 'Courier New', Courier, monospace;">f<sub>K</sub></span></h3>
+        <p><img src="image/FK.png" alt="S-DES加密流程" width="20%" height="auto"></p>
+    </div>
+
+    <!-- 8bit加解密内容 -->
+<div id="bit8" class="tab-content">
+    <h2>8bit 加解密</h2>
+    <div class="inner-content">
+    <div>
+        <button class="button" onclick="showBit8Tab('encrypt')">加密</button>
+        <button class="button" onclick="showBit8Tab('decrypt')">解密</button>
+    </div>
+
+    <!-- 加密界面 -->
+    <div id="bit8-encrypt" class="bit8-content active">
+        <p>请输入8位二进制明文</p>
+        <input type="text" id="bit8-plaintext" placeholder="如:10110100" maxlength="8" pattern="^[01]+$" title="只能输入0和1"  oninput="this.value = this.value.replace(/[^01]/g, '');">
+        <p>请输入10位二进制密钥</p>
+        <input type="text" id="bit8-key" placeholder="如:0110110100" maxlength="10" pattern="^[01]+$" title="只能输入0和1"  oninput="this.value = this.value.replace(/[^01]/g, '');">        
+        <div class="buttons">
+            <button class="button" onclick="encrypt8Bit()">确认</button>
+            <button class="button" onclick="resetInputs()">重置</button>
+        </div>
+        <div class="result-box2" id="bit8-result">
+            此处显示加密结果
+        </div>
+    </div>
+    <!-- 解密界面 -->
+    <div id="bit8-decrypt" class="bit8-content">
+        <p>请输入8位二进制密文</p>
+        <input type="text" id="bit8-ciphertext" placeholder="如:10110100" maxlength="8" pattern="^[01]+$" title="只能输入0和1"  oninput="this.value = this.value.replace(/[^01]/g, '');">
+        <p>请输入10位二进制密钥</p>
+        <input type="text" id="bit8-key-decrypt" placeholder="如:0110110100" maxlength="10" pattern="^[01]+$" title="只能输入0和1"  oninput="this.value = this.value.replace(/[^01]/g, '');">
+        <div class="buttons">
+            <button class="button" onclick="decrypt8Bit()">确认</button>
+            <button class="button" onclick="resetInputs()">重置</button>
+        </div>
+        <div class="result-box2" id="bit8-result-decrypt">
+            此处显示解密结果
+        </div>
+    </div>
+ </div>
+</div>
+
+    <!-- ASCII加解密内容 -->
+    <div id="ascii" class="tab-content">
+        <h2>ASCII 加解密</h2>
+        <div class="inner-content">
+        <div>
+            <button class="button" onclick="showASCIITab('encrypt')">加密</button>
+            <button class="button" onclick="showASCIITab('decrypt')">解密</button>
+        </div>
+        <!-- 加密界面 -->
+        <div id="ascii-encrypt" class="ascii-content active">
+            <p>请输入字符串明文</p>
+            <input type="text" id="ascii-plaintext" placeholder="请输入明文内容">
+            <p>请输入10位二进制密钥</p>
+            <input type="text" id="ascii-key" placeholder="如:0110110100" maxlength="10" pattern="^[01]+$" title="只能输入0和1"  oninput="this.value = this.value.replace(/[^01]/g, '');">        
+            <div class="buttons">
+                <button class="button" onclick="encryptASCII()">确认</button>
+                <button class="button" onclick="resetASCIIInputs()">重置</button>
+            </div>
+            <div class="result-box2" id="ascii-result-encrypt">
+                此处显示加密结果
+            </div>
+        </div>
+        <!-- 解密界面 -->
+        <div id="ascii-decrypt" class="ascii-content">
+            <p>请输入字符串密文</p>
+            <input type="text" id="ascii-ciphertext" placeholder="请输入密文内容">
+            <p>请输入10位二进制密钥</p>
+            <input type="text" id="ascii-key-decrypt" placeholder="如:0110110100" maxlength="10" pattern="^[01]+$" title="只能输入0和1"  oninput="this.value = this.value.replace(/[^01]/g, '');">
+            <div class="buttons">
+                <button class="button" onclick="decryptASCII()">确认</button>
+                <button class="button" onclick="resetInputs()">重置</button>
+            </div>
+            <div class="result-box2" id="ascii-result-decrypt">
+                此处显示解密结果
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- 文件加解密内容 -->
+    <div id="file" class="tab-content">
+        <h2>文件加解密</h2>
+        <div class="inner-content">
+        <div>
+            <button class="button" onclick="showFileTab('encrypt')">加密</button>
+            <button class="button" onclick="showFileTab('decrypt')">解密</button>
+        </div>
+      
+        <!-- 加密界面 -->
+        <div id="file-encrypt" class="file-content active">
+            <p>请选择需要加密的文件</p>
+            <input type="file" id="file-input-encrypt" style="display: none;">
+            <button id="custom-file-input-encrypt">选择文件</button>
+            <p>请输入10位二进制密钥</p>
+            <input type="text" id="file-key" placeholder="如:0110110100" maxlength="10" pattern="^[01]+$" title="只能输入0和1"  oninput="this.value = this.value.replace(/[^01]/g, '');">        
+            <div class="buttons">
+                <button class="button" onclick="encryptFile()">确认</button>
+                <button class="button" onclick="resetFileInputs()">重置</button>
+            </div>
+            <div class="result-box3" id="file-result-encrypt">
+                此处显示加密结果
+            </div>
+        </div>
+        <!-- 解密界面 -->
+        <div id="file-decrypt" class="file-content">
+            <p>请选择需要解密的文件</p>
+            <input type="file" id="file-input-decrypt" style="display: none;">
+            <button id="custom-file-input-decrypt">选择文件</button>
+            <p>请输入10位二进制密钥</p>
+            <input type="text" id="file-key-decrypt" placeholder="如:0110110100" maxlength="10" pattern="^[01]+$" title="只能输入0和1"  oninput="this.value = this.value.replace(/[^01]/g, '');">        
+            <div class="buttons">
+                <button class="button" onclick="decryptFile()">确认</button>
+                <button class="button" onclick="resetFileInputs()">重置</button>
+            </div>
+            <div class="result-box3" id="file-result-decrypt">
+                此处显示解密结果
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- 暴力破解内容 -->
+    <div id="bruteforce" class="tab-content">
+        <h2>暴力破解</h2>
+        <div class="inner-content">
+            <!-- 破解界面 -->
+            <div id="violent" class="violent-content active">
+                <p>请输入明文</p>
+                <input type="text" id="violent-plaintext" placeholder="请输入 8bit 明文内容" maxlength="8" pattern="^[01]+$" title="只能输入0和1"  oninput="this.value = this.value.replace(/[^01]/g, '');">
+                <p>请输入密文</p>
+                <input type="text" id="violent-ciphertext" placeholder="请输入 8bit 密文内容" maxlength="8" pattern="^[01]+$" title="只能输入0和1"  oninput="this.value = this.value.replace(/[^01]/g, '');">
+                <div class="buttons">
+                    <button class="button" onclick="violentSolve()">确认</button>
+                    <button class="button" onclick="resetInputs()">重置</button>
+                </div>
+                <div class="result-box4" id="violent-result-encrypt">
+                    此处显示正确的密钥Key和暴力破解所用的破译时间
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>开发人员：</strong>陈露、罗丹</p>
+            <p><strong>联系方式：</strong><a href="mailto:1055331355@qq.com">1055331355@qq.com</a></p>
+            <p><strong>版权所有：</strong>&copy; 2024 重庆大学大数据与软件学院</p>
+        </div>
+    </footer>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
