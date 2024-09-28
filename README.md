@@ -1,5 +1,6 @@
 # S-DES项目结构
-
+<pre>
+<code class="tree">
 │  README.md
 │  requirements.txt
 │  开发手册.md
@@ -31,3 +32,5 @@
     │
     └─styles	                                    - 前端页面的CSS样式定义
             style.css
+</code>
+</pre>
